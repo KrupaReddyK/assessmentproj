@@ -1,0 +1,7 @@
+{% extends 'proj1/base.html' %} {% block content%}
+<h3>Write Here</h3>
+<form method="POST">
+  {% csrf_token %} {{ form.as_p }}
+  <input type="submit" value="Tweet" />
+</form>
+{% endblock content%}

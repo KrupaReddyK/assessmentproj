@@ -1,0 +1,21 @@
+{% extends 'proj1/base.html' %} {% block content%}
+<h1>Tweet Page</h1>
+<div>
+  {% if user.is_authenticated %}
+  <div><a href="/logout">Log out</a></div>
+  <div><a href="/profile">Profile</a></div>
+  <form method="POST">
+    {% csrf_token %} {{ form.as_p }}
+    <p>create a post here</p>
+    <div><a href="/create">Create</a></div>
+  </form>
+  {% endif %} {% for tweet in tweets %}
+  <h3>{{ tweet.uname}}</h3>
+  <p>{{tweet.datetime}}</p>
+  <p>{{tweet.text}}</p>
+  {% if tweet.uname == user %}
+  <a href="{% url 'tweetupdate' tweet.id %}">Update</a>
+  <a href="{% url 'tweetdelete' tweet.id %}">Delete</a>
+  {% endif%} {% endfor %}
+</div>
+{% endblock content%}

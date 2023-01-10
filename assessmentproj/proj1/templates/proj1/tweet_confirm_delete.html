@@ -1,0 +1,8 @@
+{% extends 'proj1/base.html' %} {% block content%}
+<h3>Confirm delete</h3>
+<form method="POST">
+  {% csrf_token %}
+  <input type="submit" value="Delete" />
+  <a href="{% url 'home'%}"> Cancel</a>
+</form>
+{% endblock content%}
